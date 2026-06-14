@@ -190,10 +190,10 @@ class TargetVessel(BaseModel):
     @field_validator("mmsi")
     @classmethod
     def validate_mmsi(cls, v: str) -> str:
-        # Allow 9-digit MMSIs as well as synthetic radar track IDs (e.g. "RADAR_001")
+        # Accept real 9-digit MMSIs and any synthetic track ID (e.g. "RADAR_001", "999")
         stripped = v.strip()
-        if stripped.isdigit() and len(stripped) != 9:
-            raise ValueError(f"Numeric MMSI must be exactly 9 digits, got '{v}'")
+        if not stripped:
+            raise ValueError("MMSI must not be empty")
         return stripped
 
     @field_validator("bearing_deg")
