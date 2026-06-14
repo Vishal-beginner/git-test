@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "autonomous-ship-nav"
+version = "1.0.0"
+description = "Autonomous Ship Navigation System — COLREG-compliant, DNV NAUT-AW"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "--tb=short -q"
+
+[tool.coverage.run]
+source = ["src"]
+omit = ["tests/*"]
