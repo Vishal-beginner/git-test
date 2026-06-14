@@ -1,12 +1,31 @@
 [build-system]
-requires = ["setuptools>=68.0"]
+requires = ["setuptools>=68.0", "wheel"]
 build-backend = "setuptools.backends.legacy:build"
 
 [project]
-name = "autonomous-ship-nav"
+name = "autonomous-ship-navigation"
 version = "1.0.0"
-description = "Autonomous Ship Navigation System — COLREG-compliant, DNV NAUT-AW"
-requires-python = ">=3.11"
+description = "Autonomous Ship Navigation System with COLREG 1972 compliance"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    "numpy>=1.26.0",
+    "structlog>=23.2.0",
+    "python-jose[cryptography]>=3.3.0",
+    "pyyaml>=6.0.1",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+    "httpx>=0.25.0",
+]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
@@ -14,8 +33,8 @@ testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
-addopts = "--tb=short -q"
+addopts = "-v --tb=short"
 
-[tool.coverage.run]
-source = ["src"]
-omit = ["tests/*"]
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
