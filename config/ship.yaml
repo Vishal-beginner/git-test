@@ -1,0 +1,36 @@
+ship:
+  mmsi: "123456789"
+  name: "MV AUTONOMOUS PIONEER"
+  vessel_type: POWER_DRIVEN
+  dimensions:
+    length_m: 180.0
+    beam_m: 28.0
+    draft_m: 9.5
+    gross_tonnage: 25000
+  max_speed_kts: 18.0
+  min_speed_kts: 2.0
+
+safety:
+  dcpa_threshold_nm: 0.5
+  tcpa_threshold_min: 15.0
+  safe_speed_restricted_vis_kts: 10.0
+  coast_margin_nm: 0.5
+  hard_min_dcpa_nm: 0.2
+
+sensors:
+  radar_range_nm: 12.0
+  ais_range_nm: 20.0
+  lidar_range_m: 200.0
+  minimum_sensors_required: 2
+
+navigation:
+  route_planning_margin_nm: 0.5
+  waypoint_arrival_radius_nm: 0.2
+  max_cross_track_error_nm: 0.3
+  los_lookahead_nm: 1.0
+
+remote_ops:
+  api_host: "0.0.0.0"
+  api_port: 8080
+  websocket_port: 8081
+  heartbeat_interval_s: 5.0
